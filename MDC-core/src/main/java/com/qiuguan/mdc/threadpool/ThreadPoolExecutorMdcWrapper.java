@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
  * 【实际应用中应该避免这种用法】，重写线程池无非是对任务进行一次封装
  */
 public class ThreadPoolExecutorMdcWrapper extends ThreadPoolExecutor {
+
     public ThreadPoolExecutorMdcWrapper(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit,
                                         BlockingQueue<Runnable> workQueue) {
         super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);

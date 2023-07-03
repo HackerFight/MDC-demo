@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringApplicationRunListener;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import javax.swing.*;
 import java.time.Duration;
 
 import static com.qiuguan.mdc.utils.MDCUtils.TRACE;
