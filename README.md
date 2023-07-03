@@ -10,7 +10,11 @@
 
 
 ## 2. MDC-feign
-这个模块我是想演示feign调用的MDC打印。。后面补充
+这个模块我是想演示feign调用的MDC打印。。后面补充<br>
+计划:<br>
+1. 在MDC-Core模块中定义feign的client, 指定拦截器
+2. 请求到MDC-feign模块中提供的方法，然后看日志打印
+
 
 
 
