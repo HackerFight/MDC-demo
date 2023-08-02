@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 还有其他办法可以让服务提供者打印日志吗？  有待考察
  * 1.或者过滤器？
  * 2.或者AOP ?
+ *
+ * 参考这个文档：https://blog.csdn.net/MadLifeBin/article/details/120445839
+ * 它实际上就是给每个服务（服务提供者，服务消费者）都写了一个过滤器，然后在过滤器中操作MDC
  */
 @FeignClient(name = "pointClient", url = "http://localhost:9002"/*, configuration = PointFeignConfiguration.class*/)
 public interface PointFeignClient {
