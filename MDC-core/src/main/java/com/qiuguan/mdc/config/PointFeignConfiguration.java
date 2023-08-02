@@ -5,11 +5,10 @@ import feign.RequestInterceptor;
 import org.slf4j.MDC;
 import org.springframework.context.annotation.Bean;
 import org.springframework.util.CollectionUtils;
-
-import java.util.ArrayList;
 import java.util.Collection;
 
 import static com.qiuguan.mdc.utils.MDCUtils.TRACE;
+
 
 /**
  * @author qiuguan
@@ -23,12 +22,14 @@ public class PointFeignConfiguration {
             Collection<String> collection = requestTemplate.headers().get(TRACE);
             String traceId = null;
             if (CollectionUtils.isEmpty(collection)) {
-                MDC.put(TRACE, traceId = MDCUtils.generateTraceId());
-            } else {
-                MDC.put(TRACE, new ArrayList<>(collection).get(0));
+                traceId = MDC.get(TRACE);
             }
 
-            //requestTemplate.header(TRACE, traceId);
+            if (null == traceId) {
+                traceId = MDCUtils.generateTraceId();
+            }
+
+            requestTemplate.header(TRACE, traceId);
         };
     }
 }
