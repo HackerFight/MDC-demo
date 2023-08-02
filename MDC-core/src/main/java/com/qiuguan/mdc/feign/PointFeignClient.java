@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
  * MDC中，这样就打印了。。。。。
  *
  * 还有其他办法可以让服务提供者打印日志吗？  有待考察
+ * 1.或者过滤器？
+ * 2.或者AOP ?
  */
 @FeignClient(name = "pointClient", url = "http://localhost:9002"/*, configuration = PointFeignConfiguration.class*/)
 public interface PointFeignClient {
