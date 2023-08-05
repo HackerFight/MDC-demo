@@ -1,6 +1,6 @@
 package com.qiuguan.mdc.interceptors;
 
-import com.qiuguan.mdc.utils.MDCUtils;
+import com.qiuguan.mdc.common.utils.MDCUtils;
 import org.slf4j.MDC;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -10,7 +10,8 @@ import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 
-import static com.qiuguan.mdc.utils.MDCUtils.TRACE;
+import static com.qiuguan.mdc.common.utils.MDCUtils.TRACE;
+
 
 /**
  * @author qiuguan

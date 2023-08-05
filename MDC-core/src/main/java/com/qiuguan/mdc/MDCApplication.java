@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  * @author fu yuan hui
  * @date 2023-07-03 15:17:16 Monday
+ *
  */
 @EnableFeignClients
 @SpringBootApplication

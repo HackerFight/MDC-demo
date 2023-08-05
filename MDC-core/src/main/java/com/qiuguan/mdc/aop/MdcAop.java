@@ -1,6 +1,6 @@
 package com.qiuguan.mdc.aop;
 
-import com.qiuguan.mdc.utils.MDCUtils;
+import com.qiuguan.mdc.common.utils.MDCUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -8,17 +8,21 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.MDC;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.UUID;
 
 /**
  * @author qiuguan
  * @date 2023/08/02 23:53:03  星期三
  *
  * @see com.qiuguan.mdc.interceptors.MdcLogInterceptor
+ *
+ * 请求 =====> 过滤器 ---- 拦截器 ---- AOP
+ * 最好每一个中都先判断是否有trace_id, 如果有则直接使用，没有再去生成和传递
  */
 @Slf4j
 @Component
@@ -27,9 +31,6 @@ public class MdcAop {
 
     private final static String TRACE_ID = "trace_id";
 
-    @Autowired
-    private HttpServletRequest request;
-
     @Pointcut("execution(public * com.qiuguan.mdc.controller..*.*(..)) ")
     public void pointCut() {
 
@@ -37,13 +38,25 @@ public class MdcAop {
 
     @Before("pointCut()")
     public void before(){
-        if (request != null && request.getHeader(TRACE_ID) != null) {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (requestAttributes == null) {
+            return;
+        }
+        HttpServletRequest request = requestAttributes.getRequest();
+        String traceId;
+        if ((traceId = request.getHeader(TRACE_ID)) != null) {
             MDC.put(TRACE_ID, request.getHeader(TRACE_ID));
-        }else{
-            MDC.put(TRACE_ID, MDCUtils.generateTraceId());
+        }
+        if (!StringUtils.hasText(traceId)) {
+            traceId = MDC.get(TRACE_ID);
         }
 
-        log.info("请求入口.......");
+        if (!StringUtils.hasText(traceId)) {
+            traceId = MDCUtils.generateTraceId();
+        }
+
+        MDC.put(TRACE_ID, traceId);
+        log.info("【AOP】前置通知开始执行请求===================");
     }
 
     /**

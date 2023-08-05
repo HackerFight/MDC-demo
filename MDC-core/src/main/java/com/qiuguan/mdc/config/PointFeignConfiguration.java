@@ -1,13 +1,13 @@
 package com.qiuguan.mdc.config;
 
-import com.qiuguan.mdc.utils.MDCUtils;
+import com.qiuguan.mdc.common.utils.MDCUtils;
 import feign.RequestInterceptor;
 import org.slf4j.MDC;
 import org.springframework.context.annotation.Bean;
 import org.springframework.util.CollectionUtils;
 import java.util.Collection;
 
-import static com.qiuguan.mdc.utils.MDCUtils.TRACE;
+import static com.qiuguan.mdc.common.utils.MDCUtils.TRACE;
 
 
 /**

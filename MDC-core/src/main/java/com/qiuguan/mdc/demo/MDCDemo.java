@@ -6,7 +6,7 @@ import org.slf4j.MDC;
 
 import java.util.UUID;
 
-import static com.qiuguan.mdc.utils.MDCUtils.TRACE;
+import static com.qiuguan.mdc.common.utils.MDCUtils.TRACE;
 
 /**
  * @author fu yuan hui

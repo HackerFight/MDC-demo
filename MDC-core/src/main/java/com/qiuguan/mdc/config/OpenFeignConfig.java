@@ -1,14 +1,12 @@
 package com.qiuguan.mdc.config;
 
-import com.qiuguan.mdc.utils.MDCUtils;
+import com.qiuguan.mdc.common.utils.MDCUtils;
 import feign.Logger;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.slf4j.MDC;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.print.DocFlavor;
 
 /**
  * @author qiuguan

@@ -1,4 +1,4 @@
-package com.qiuguan.mdc.utils;
+package com.qiuguan.mdc.common.utils;
 
 import org.slf4j.MDC;
 

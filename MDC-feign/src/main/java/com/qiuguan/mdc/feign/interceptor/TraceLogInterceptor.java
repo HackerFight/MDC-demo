@@ -1,5 +1,6 @@
 package com.qiuguan.mdc.feign.interceptor;
 
+import com.qiuguan.mdc.common.utils.MDCUtils;
 import org.slf4j.MDC;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -14,8 +15,9 @@ public class TraceLogInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String traceId = request.getHeader("trace_id");
-        MDC.put("trace_id", traceId);
+        String traceId = request.getHeader(MDCUtils.TRACE);
+        System.out.println(MDC.get(MDCUtils.TRACE));
+        MDC.put(MDCUtils.TRACE, traceId);
 
         return true;
     }

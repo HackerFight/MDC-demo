@@ -3,6 +3,7 @@ package com.qiuguan.mdc.config;
 import com.qiuguan.mdc.interceptors.HttpRequestInterceptor;
 import com.qiuguan.mdc.interceptors.MdcLogInterceptor;
 import com.qiuguan.mdc.threadpool.ThreadPoolExecutorMdcWrapper;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -19,14 +20,24 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author fu yuan hui
  * @date 2023-07-03 16:23:40 Monday
+ *
+ * @see ServletComponentScan 扫描标注了
+ * {@link javax.servlet.annotation.WebFilter},
+ * {@link javax.servlet.annotation.WebServlet},
+ * {@link javax.servlet.annotation.WebListener}
+ * 注解的组件。或者使用 {@link org.springframework.boot.web.servlet.ServletRegistrationBean} 去配置类中注册
+ *
+ * 请求 =====> 过滤器 ---- 拦截器 ---- AOP
+ * 最好每一个中都先判断是否有trace_id, 如果有则直接使用，没有再去生成和传递
  */
+@ServletComponentScan(basePackages = "com.qiuguan.mdc.filter")
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        //registry.addInterceptor(handlerInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(handlerInterceptor()).addPathPatterns("/**");
     }
 
     @Bean

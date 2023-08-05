@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -40,6 +41,6 @@ public class OrderService {
                logger.info("异步【通过线程池】发送积分...【使用的是sl4j的 LoggerFactory.getLogger 打印的日志】。");
             }
         });
-        return "100001";
+        return "100001---" + LocalDateTime.now();
     }
 }

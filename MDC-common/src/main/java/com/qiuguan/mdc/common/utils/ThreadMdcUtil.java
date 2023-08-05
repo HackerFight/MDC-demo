@@ -1,11 +1,11 @@
-package com.qiuguan.mdc.utils;
+package com.qiuguan.mdc.common.utils;
 
 import org.slf4j.MDC;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-import static com.qiuguan.mdc.utils.MDCUtils.TRACE;
+import static com.qiuguan.mdc.common.utils.MDCUtils.TRACE;
 
 /**
  * @author qiuguan

@@ -1,15 +1,9 @@
 package com.qiuguan.mdc.threadpool;
 
-import com.qiuguan.mdc.utils.ThreadMdcUtil;
+import com.qiuguan.mdc.common.utils.ThreadMdcUtil;
 import org.slf4j.MDC;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author qiuguan

@@ -6,6 +6,10 @@
 > 1.`MDCController` ---> `OrderService` ---> `异步发送积分`, 前面2步日志可以正常打印MDC的信息，但是`异步发送积分` 中使用 `new Thread()` 方式无法打印MDC信息，但是通过包装后的线程池在发送就可以正常打印MDC信息了。<br>
 > 2.`MdcLogInterceptor` webmvc拦截器的preHandle()方法指定MDC信息
 
+3. 请求进来先到 **过滤器**，再到 **拦截器**，再到**AOP**, 所以trace_id在哪里设置一目了然。（请看`MdcLogInterceptor`类的注释)
+> 推荐设置在`过滤器`中,而且过滤器最好是所有模块共用的。
+
+
 
 ## 2. MDC-feign
 这个模块我是想演示feign调用的MDC打印。。后面补充<br>
