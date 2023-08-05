@@ -12,6 +12,7 @@
         <module>MDC-core</module>
         <module>MDC-feign</module>
         <module>MDC-common</module>
+        <module>MDC-http</module>
     </modules>
 
     <properties>
@@ -97,12 +98,20 @@
             <artifactId>feign-okhttp</artifactId>
         </dependency>
 
-        <!-- https://github.com/alibaba/transmittable-thread-local -->
+        <!-- 官方已经将httpclient 移到 httpclient5中了  -->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>5.2.1</version>
+        </dependency>
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>transmittable-thread-local</artifactId>
             <version>2.14.2</version>
         </dependency>
+
+
 
     </dependencies>
 

@@ -18,9 +18,10 @@
 2. 请求到MDC-feign模块中提供的方法，然后看日志打印
 
 
+## 3. MCD-http
+用来测试 RestTemplate, OkHttpClient, HttpClient 请求的，请求入口还是在 MDC-core中的Controller中
 
-
-## 3.MDC 存在的问题
+## 4.MDC 存在的问题
 1. 子线程打印日志丢失traceId
 > 就是我前面提到的`异步发送积分`,通过修改线程池的工具类可以解决。<br>
 
@@ -33,8 +34,11 @@ Map<String, String> mainContext = MDC.getCopyOfContextMap()
 MDC.setContextMap(mainContext)
 ```
 
-2. Http调用丢失traceId
-> 这个我没有测试，[参考文档](https://juejin.cn/post/7074461710030995492)
+2.feign调用丢失trace_id ?
+这个需要再调用方给feign拦截器的header设置trace_id, 然后提供服务方配置一个MVC拦截器，从HttpServletRequest的请求头中获取trace_id, 然后设置到MDC中
 
-3. feign调用会丢失traceId ?
-> 这个是我的联想，但是我想他和上面的本质一样，后面在补充。
+3. Http调用丢失traceId
+> 这个我没有测试，[参考文档](https://juejin.cn/post/7074461710030995492)
+<br>
+
+如果测试就用`MDCHttpController`进行测试吧，因为目前使用这种方法调用的比较少。如果调用外部服务，不设置应该也可以吧
