@@ -34,7 +34,7 @@ Map<String, String> mainContext = MDC.getCopyOfContextMap()
 MDC.setContextMap(mainContext)
 ```
 
-2.feign调用丢失trace_id ?
+2.feign调用丢失trace_id ? <br>
 这个需要再调用方给feign拦截器的header设置trace_id, 然后提供服务方配置一个MVC拦截器，从HttpServletRequest的请求头中获取trace_id, 然后设置到MDC中
 
 3. Http调用丢失traceId
