@@ -48,7 +48,7 @@ public class MdcLogInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("【MVC拦截器】开始执行请求===================");
+        log.info("【MVC拦截器】23开始执行请求===================");
         String trace = request.getHeader(TRACE);
         if (!StringUtils.hasText(trace)) {
             trace = MDC.get(TRACE);
