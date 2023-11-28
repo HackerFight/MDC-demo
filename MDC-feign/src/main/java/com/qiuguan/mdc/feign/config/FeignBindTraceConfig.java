@@ -1,4 +1,4 @@
-package com.qiuguan.mdc.config;
+package com.qiuguan.mdc.feign.config;
 
 import com.qiuguan.mdc.common.utils.MDCUtils;
 import feign.Logger;
@@ -9,11 +9,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author qiuguan
- * @date 2023/07/04 23:07:16  星期二
+ * @author fu yuan hui
+ * @date 2023-09-27 16:51:46 Wednesday
+ *
+ * 拦截器 {@link FeignBindTraceConfig } 和 {@link OpenFeignConfig } 是全局拦截器，因为他们有
+ * {@link org.springframework.context.annotation.Configuration} 注解标注，所有的feign调用时都会执行
+ * 而 {@link LocalFeignConfiguration} 是局部的feign拦截器
  */
+
 @Configuration
-public class OpenFeignConfig {
+public class FeignBindTraceConfig {
+
 
     @Bean
     Logger.Level feignLoggerLevel() {
@@ -21,9 +27,8 @@ public class OpenFeignConfig {
     }
 
     @Bean
-    public RequestInterceptor cdbAuthRequestInterceptor() {
+    public RequestInterceptor traceLogRequestInterceptor() {
         return new OpenFeignTraceInterceptor();
-        //return template -> template.header(MDCUtils.TRACE, MDC.get(MDCUtils.TRACE));
     }
 
 

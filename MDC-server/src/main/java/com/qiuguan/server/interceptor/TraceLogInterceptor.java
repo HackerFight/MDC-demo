@@ -1,4 +1,4 @@
-package com.qiuguan.mdc.feign.interceptor;
+package com.qiuguan.server.interceptor;
 
 import com.qiuguan.mdc.common.utils.MDCUtils;
 import org.slf4j.MDC;

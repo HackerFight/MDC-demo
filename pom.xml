@@ -13,6 +13,7 @@
         <module>MDC-feign</module>
         <module>MDC-common</module>
         <module>MDC-http</module>
+        <module>MDC-server</module>
     </modules>
 
     <properties>

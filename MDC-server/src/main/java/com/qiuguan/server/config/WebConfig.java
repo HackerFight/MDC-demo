@@ -1,7 +1,6 @@
-package com.qiuguan.mdc.feign.config;
+package com.qiuguan.server.config;
 
-import com.qiuguan.mdc.feign.interceptor.TraceLogInterceptor;
-import org.springframework.boot.web.servlet.ServletComponentScan;
+import com.qiuguan.server.interceptor.TraceLogInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -12,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author fu yuan hui
  * @date 2023-07-03 16:23:40 Monday
  */
-@ServletComponentScan(basePackages = "com.qiuguan.mdc.feign.filter")
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 

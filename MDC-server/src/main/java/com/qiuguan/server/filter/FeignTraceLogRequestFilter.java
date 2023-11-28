@@ -1,4 +1,4 @@
-package com.qiuguan.mdc.feign.filter;
+package com.qiuguan.server.filter;
 
 import com.qiuguan.mdc.common.utils.MDCUtils;
 import lombok.extern.slf4j.Slf4j;
