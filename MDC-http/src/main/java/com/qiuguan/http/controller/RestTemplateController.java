@@ -1,6 +1,9 @@
 package com.qiuguan.http.controller;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * @author qiuguan
@@ -9,4 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestTemplateController {
 
+    @Resource
+    private RestTemplate restTemplate;
 }
