@@ -26,4 +26,11 @@ public class HttpController {
         log.info("WebClient 调用检查traceId是否一致。。。。。。");
         return "WebClient 调用检查traceId是否一致";
     }
+
+
+    @GetMapping("/v3")
+    public String okHttp() {
+        log.info("okHttp 调用检查traceId是否一致。。。。。。");
+        return "okHttp 调用检查traceId是否一致";
+    }
 }

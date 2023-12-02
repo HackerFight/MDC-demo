@@ -1,2 +1,7 @@
 server:
   port: 9002
+
+
+feign:
+  okhttp:
+    enabled: true
