@@ -18,14 +18,7 @@ public class TraceLogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String traceId = request.getHeader(MDCUtils.TRACE);
-        if (null != traceId) {
-            log.info("从请求头获取了traceId: {}", traceId);
-        } else {
-            traceId = MDC.get(MDCUtils.TRACE);
-            if (traceId != null) {
-                log.info("从MDC中获取了traceId: {}", traceId);
-            }
-        }
+        traceId = traceId == null ? MDC.get(MDCUtils.TRACE) : traceId;
 
         MDC.put(MDCUtils.TRACE, traceId == null ? MDCUtils.generateTraceId() : traceId);
         return true;
